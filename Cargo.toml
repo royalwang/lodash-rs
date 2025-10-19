@@ -69,9 +69,9 @@ features = []
 rustdoc-args = ["--cfg", "docsrs"]
 
 # Benchmark configuration
-# [[bench]]
-# name = "collection_benchmarks"
-# harness = false
+[[bench]]
+name = "collection_benchmarks"
+harness = false
 
 [lib]
 name = "lodash_rs"
