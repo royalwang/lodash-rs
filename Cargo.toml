@@ -14,14 +14,7 @@ keywords = [
     "collections", 
     "functional", 
     "iterator", 
-    "utility", 
-    "array", 
-    "vector", 
-    "map", 
-    "filter", 
-    "reduce",
-    "async",
-    "parallel"
+    "utility"
 ]
 categories = [
     "data-structures", 
