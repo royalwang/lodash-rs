@@ -4,7 +4,7 @@ Basic usage examples for Lodash-RS.
 This example demonstrates the core functionality of the Lodash-RS library.
 */
 
-use lodash_rs::prelude::*;
+use rust_lodash::prelude::*;
 
 fn main() {
     println!("=== Lodash-RS Basic Usage Examples ===\n");

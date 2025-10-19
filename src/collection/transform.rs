@@ -16,7 +16,7 @@ use std::collections::HashMap;
 /// # Examples
 /// 
 /// ```
-/// use lodash_rs::collection::transform::group_by;
+/// use rust_lodash::collection::transform::group_by;
 /// use std::collections::HashMap;
 /// 
 /// let numbers = vec![6.1, 4.2, 6.3];
@@ -45,7 +45,7 @@ where
 /// # Examples
 /// 
 /// ```
-/// use lodash_rs::collection::transform::key_by;
+/// use rust_lodash::collection::transform::key_by;
 /// use std::collections::HashMap;
 /// 
 /// let users = vec![
@@ -75,7 +75,7 @@ where
 /// # Examples
 /// 
 /// ```
-/// use lodash_rs::collection::transform::invoke;
+/// use rust_lodash::collection::transform::invoke;
 /// 
 /// let strings = vec!["hello", "world"];
 /// let uppercased = invoke(&strings, |s| s.to_uppercase());
@@ -94,7 +94,7 @@ where
 /// # Examples
 /// 
 /// ```
-/// use lodash_rs::collection::transform::sort_by;
+/// use rust_lodash::collection::transform::sort_by;
 /// 
 /// let users = vec![
 ///     ("john", 30),
@@ -123,7 +123,7 @@ where
 /// # Examples
 /// 
 /// ```
-/// use lodash_rs::collection::transform::order_by;
+/// use rust_lodash::collection::transform::order_by;
 /// 
 /// let users = vec![
 ///     ("john", 30, "engineer"),
@@ -162,7 +162,7 @@ impl<T> Collection<T> {
     /// # Examples
     /// 
     /// ```
-    /// use lodash_rs::collection::Collection;
+    /// use rust_lodash::collection::Collection;
     /// use std::collections::HashMap;
     /// 
     /// let collection = Collection::new(vec![6.1, 4.2, 6.3]);
@@ -184,7 +184,7 @@ impl<T> Collection<T> {
     /// # Examples
     /// 
     /// ```
-    /// use lodash_rs::collection::Collection;
+    /// use rust_lodash::collection::Collection;
     /// use std::collections::HashMap;
     /// 
     /// let collection = Collection::new(vec![
@@ -209,7 +209,7 @@ impl<T> Collection<T> {
     /// # Examples
     /// 
     /// ```
-    /// use lodash_rs::collection::Collection;
+    /// use rust_lodash::collection::Collection;
     /// 
     /// let collection = Collection::new(vec!["hello", "world"]);
     /// let uppercased = collection.invoke(|s| s.to_uppercase());
@@ -228,7 +228,7 @@ impl<T> Collection<T> {
     /// # Examples
     /// 
     /// ```
-    /// use lodash_rs::collection::Collection;
+    /// use rust_lodash::collection::Collection;
     /// 
     /// let collection = Collection::new(vec![
     ///     ("john", 30),
@@ -253,7 +253,7 @@ impl<T> Collection<T> {
     /// # Examples
     /// 
     /// ```
-    /// use lodash_rs::collection::Collection;
+    /// use rust_lodash::collection::Collection;
     /// 
     /// let collection = Collection::new(vec![
     ///     ("john", 30, "engineer"),

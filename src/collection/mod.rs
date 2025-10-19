@@ -29,7 +29,7 @@ impl<T> Collection<T> {
     /// # Examples
     /// 
     /// ```
-    /// use lodash_rs::collection::Collection;
+    /// use rust_lodash::collection::Collection;
     /// 
     /// let collection = Collection::new(vec![1, 2, 3]);
     /// assert_eq!(collection.len(), 3);
@@ -45,7 +45,7 @@ impl<T> Collection<T> {
     /// # Examples
     /// 
     /// ```
-    /// use lodash_rs::collection::Collection;
+    /// use rust_lodash::collection::Collection;
     /// 
     /// let collection: Collection<i32> = Collection::empty();
     /// assert!(collection.is_empty());
@@ -59,7 +59,7 @@ impl<T> Collection<T> {
     /// # Examples
     /// 
     /// ```
-    /// use lodash_rs::collection::Collection;
+    /// use rust_lodash::collection::Collection;
     /// 
     /// let collection = Collection::new(vec![1, 2, 3]);
     /// assert_eq!(collection.len(), 3);
@@ -73,7 +73,7 @@ impl<T> Collection<T> {
     /// # Examples
     /// 
     /// ```
-    /// use lodash_rs::collection::Collection;
+    /// use rust_lodash::collection::Collection;
     /// 
     /// let collection: Collection<i32> = Collection::empty();
     /// assert!(collection.is_empty());
@@ -90,7 +90,7 @@ impl<T> Collection<T> {
     /// # Examples
     /// 
     /// ```
-    /// use lodash_rs::collection::Collection;
+    /// use rust_lodash::collection::Collection;
     /// 
     /// let collection = Collection::new(vec![1, 2, 3]);
     /// assert_eq!(collection.data(), &vec![1, 2, 3]);
@@ -104,7 +104,7 @@ impl<T> Collection<T> {
     /// # Examples
     /// 
     /// ```
-    /// use lodash_rs::collection::Collection;
+    /// use rust_lodash::collection::Collection;
     /// 
     /// let mut collection = Collection::new(vec![1, 2, 3]);
     /// collection.data_mut().push(4);
@@ -119,7 +119,7 @@ impl<T> Collection<T> {
     /// # Examples
     /// 
     /// ```
-    /// use lodash_rs::collection::Collection;
+    /// use rust_lodash::collection::Collection;
     /// 
     /// let collection = Collection::new(vec![1, 2, 3]);
     /// assert_eq!(collection.get(1), Some(&2));
@@ -134,7 +134,7 @@ impl<T> Collection<T> {
     /// # Examples
     /// 
     /// ```
-    /// use lodash_rs::collection::Collection;
+    /// use rust_lodash::collection::Collection;
     /// 
     /// let mut collection = Collection::new(vec![1, 2, 3]);
     /// if let Some(item) = collection.get_mut(1) {
@@ -151,7 +151,7 @@ impl<T> Collection<T> {
     /// # Examples
     /// 
     /// ```
-    /// use lodash_rs::collection::Collection;
+    /// use rust_lodash::collection::Collection;
     /// 
     /// let collection = Collection::new(vec![1, 2, 3]);
     /// assert_eq!(collection.first(), Some(&1));
@@ -168,7 +168,7 @@ impl<T> Collection<T> {
     /// # Examples
     /// 
     /// ```
-    /// use lodash_rs::collection::Collection;
+    /// use rust_lodash::collection::Collection;
     /// 
     /// let collection = Collection::new(vec![1, 2, 3]);
     /// assert_eq!(collection.last(), Some(&3));
@@ -185,7 +185,7 @@ impl<T> Collection<T> {
     /// # Examples
     /// 
     /// ```
-    /// use lodash_rs::collection::Collection;
+    /// use rust_lodash::collection::Collection;
     /// 
     /// let collection = Collection::new(vec![1, 2, 3]);
     /// let vec = collection.into_vec();
@@ -200,7 +200,7 @@ impl<T> Collection<T> {
     /// # Examples
     /// 
     /// ```
-    /// use lodash_rs::collection::Collection;
+    /// use rust_lodash::collection::Collection;
     /// 
     /// let collection = Collection::new(vec![1, 2, 3]);
     /// let sum: i32 = collection.into_iter().sum();
@@ -215,7 +215,7 @@ impl<T> Collection<T> {
     /// # Examples
     /// 
     /// ```
-    /// use lodash_rs::collection::Collection;
+    /// use rust_lodash::collection::Collection;
     /// 
     /// let collection = Collection::new(vec![1, 2, 3]);
     /// let sum: i32 = collection.iter().sum();
@@ -230,7 +230,7 @@ impl<T> Collection<T> {
     /// # Examples
     /// 
     /// ```
-    /// use lodash_rs::collection::Collection;
+    /// use rust_lodash::collection::Collection;
     /// 
     /// let mut collection = Collection::new(vec![1, 2, 3]);
     /// for item in collection.iter_mut() {

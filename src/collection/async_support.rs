@@ -18,7 +18,7 @@ use crate::utils::{LodashError, Result, AsyncPredicate, AsyncMapper, AsyncReduce
 /// # Examples
 /// 
 /// ```
-/// use lodash_rs::collection::async_support::map_async;
+/// use rust_lodash::collection::async_support::map_async;
 /// 
 /// # async fn example() {
 /// let numbers = vec![1, 2, 3, 4, 5];
@@ -41,7 +41,7 @@ where
 /// # Examples
 /// 
 /// ```
-/// use lodash_rs::collection::async_support::filter_async;
+/// use rust_lodash::collection::async_support::filter_async;
 /// 
 /// # async fn example() {
 /// let numbers = vec![1, 2, 3, 4, 5];
@@ -74,7 +74,7 @@ where
 /// # Examples
 /// 
 /// ```
-/// use lodash_rs::collection::async_support::reduce_async;
+/// use rust_lodash::collection::async_support::reduce_async;
 /// 
 /// # async fn example() {
 /// let numbers = vec![1, 2, 3, 4, 5];
@@ -100,7 +100,7 @@ where
 /// # Examples
 /// 
 /// ```
-/// use lodash_rs::collection::async_support::for_each_async;
+/// use rust_lodash::collection::async_support::for_each_async;
 /// 
 /// # async fn example() {
 /// let numbers = vec![1, 2, 3, 4, 5];
@@ -124,7 +124,7 @@ where
 /// # Examples
 /// 
 /// ```
-/// use lodash_rs::collection::async_support::find_async;
+/// use rust_lodash::collection::async_support::find_async;
 /// 
 /// # async fn example() {
 /// let numbers = vec![1, 2, 3, 4, 5];
@@ -151,7 +151,7 @@ where
 /// # Examples
 /// 
 /// ```
-/// use lodash_rs::collection::async_support::every_async;
+/// use rust_lodash::collection::async_support::every_async;
 /// 
 /// # async fn example() {
 /// let numbers = vec![2, 4, 6, 8];
@@ -178,7 +178,7 @@ where
 /// # Examples
 /// 
 /// ```
-/// use lodash_rs::collection::async_support::some_async;
+/// use rust_lodash::collection::async_support::some_async;
 /// 
 /// # async fn example() {
 /// let numbers = vec![1, 3, 5, 7];
@@ -207,7 +207,7 @@ impl<T> Collection<T> {
     /// # Examples
     /// 
     /// ```
-    /// use lodash_rs::collection::Collection;
+    /// use rust_lodash::collection::Collection;
     /// 
     /// # async fn example() {
     /// let collection = Collection::new(vec![1, 2, 3, 4, 5]);
@@ -228,7 +228,7 @@ impl<T> Collection<T> {
     /// # Examples
     /// 
     /// ```
-    /// use lodash_rs::collection::Collection;
+    /// use rust_lodash::collection::Collection;
     /// 
     /// # async fn example() {
     /// let collection = Collection::new(vec![1, 2, 3, 4, 5]);
@@ -250,7 +250,7 @@ impl<T> Collection<T> {
     /// # Examples
     /// 
     /// ```
-    /// use lodash_rs::collection::Collection;
+    /// use rust_lodash::collection::Collection;
     /// 
     /// # async fn example() {
     /// let collection = Collection::new(vec![1, 2, 3, 4, 5]);
@@ -271,7 +271,7 @@ impl<T> Collection<T> {
     /// # Examples
     /// 
     /// ```
-    /// use lodash_rs::collection::Collection;
+    /// use rust_lodash::collection::Collection;
     /// 
     /// # async fn example() {
     /// let collection = Collection::new(vec![1, 2, 3, 4, 5]);
@@ -293,7 +293,7 @@ impl<T> Collection<T> {
     /// # Examples
     /// 
     /// ```
-    /// use lodash_rs::collection::Collection;
+    /// use rust_lodash::collection::Collection;
     /// 
     /// # async fn example() {
     /// let collection = Collection::new(vec![1, 2, 3, 4, 5]);
@@ -314,7 +314,7 @@ impl<T> Collection<T> {
     /// # Examples
     /// 
     /// ```
-    /// use lodash_rs::collection::Collection;
+    /// use rust_lodash::collection::Collection;
     /// 
     /// # async fn example() {
     /// let collection = Collection::new(vec![2, 4, 6, 8]);
@@ -335,7 +335,7 @@ impl<T> Collection<T> {
     /// # Examples
     /// 
     /// ```
-    /// use lodash_rs::collection::Collection;
+    /// use rust_lodash::collection::Collection;
     /// 
     /// # async fn example() {
     /// let collection = Collection::new(vec![1, 3, 5, 7]);

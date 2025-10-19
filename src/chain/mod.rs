@@ -16,7 +16,7 @@ use crate::utils::{LodashError, Result};
 /// # Examples
 /// 
 /// ```
-/// use lodash_rs::chain::chain;
+/// use rust_lodash::chain::chain;
 /// 
 /// let result = chain(&[1, 2, 3, 4, 5])
 ///     .filter(|x| x % 2 == 0)
@@ -36,7 +36,7 @@ where
 /// # Examples
 /// 
 /// ```
-/// use lodash_rs::chain::chain_async;
+/// use rust_lodash::chain::chain_async;
 /// 
 /// # async fn example() {
 /// let result = chain_async(&[1, 2, 3, 4, 5])
@@ -120,7 +120,7 @@ where
     /// # Examples
     /// 
     /// ```
-    /// use lodash_rs::chain::chain;
+    /// use rust_lodash::chain::chain;
     /// 
     /// let result = chain(&[1, 2, 3])
     ///     .map(|x| x * 2)
@@ -140,7 +140,7 @@ where
     /// # Examples
     /// 
     /// ```
-    /// use lodash_rs::chain::chain;
+    /// use rust_lodash::chain::chain;
     /// 
     /// let result = chain(&[1, 2, 3, 4, 5])
     ///     .filter(|x| x % 2 == 0)
@@ -160,7 +160,7 @@ where
     /// # Examples
     /// 
     /// ```
-    /// use lodash_rs::chain::chain;
+    /// use rust_lodash::chain::chain;
     /// 
     /// let result = chain(&[1, 2, 3, 4, 5])
     ///     .take(3)
@@ -177,7 +177,7 @@ where
     /// # Examples
     /// 
     /// ```
-    /// use lodash_rs::chain::chain;
+    /// use rust_lodash::chain::chain;
     /// 
     /// let result = chain(&[1, 2, 3, 4, 5])
     ///     .skip(2)
@@ -194,7 +194,7 @@ where
     /// # Examples
     /// 
     /// ```
-    /// use lodash_rs::chain::chain;
+    /// use rust_lodash::chain::chain;
     /// 
     /// let result = chain(&[1, 2, 3])
     ///     .reverse()
@@ -211,7 +211,7 @@ where
     /// # Examples
     /// 
     /// ```
-    /// use lodash_rs::chain::chain;
+    /// use rust_lodash::chain::chain;
     /// 
     /// let result = chain(&[1, 2, 3])
     ///     .map(|x| x * 2)
@@ -227,7 +227,7 @@ where
     /// # Examples
     /// 
     /// ```
-    /// use lodash_rs::chain::chain;
+    /// use rust_lodash::chain::chain;
     /// 
     /// let result = chain(&[1, 2, 3])
     ///     .map(|x| x * 2)
@@ -265,7 +265,7 @@ where
     /// # Examples
     /// 
     /// ```
-    /// use lodash_rs::chain::chain;
+    /// use rust_lodash::chain::chain;
     /// 
     /// let collection = chain(&[1, 2, 3])
     ///     .map(|x| x * 2)
@@ -295,7 +295,7 @@ where
     /// # Examples
     /// 
     /// ```
-    /// use lodash_rs::chain::chain_async;
+    /// use rust_lodash::chain::chain_async;
     /// 
     /// # async fn example() {
     /// let result = chain_async(&[1, 2, 3])
@@ -320,7 +320,7 @@ where
     /// # Examples
     /// 
     /// ```
-    /// use lodash_rs::chain::chain_async;
+    /// use rust_lodash::chain::chain_async;
     /// 
     /// # async fn example() {
     /// let result = chain_async(&[1, 2, 3, 4, 5])
@@ -363,7 +363,7 @@ where
     /// # Examples
     /// 
     /// ```
-    /// use lodash_rs::chain::chain_async;
+    /// use rust_lodash::chain::chain_async;
     /// 
     /// # async fn example() {
     /// let result = chain_async(&[1, 2, 3])

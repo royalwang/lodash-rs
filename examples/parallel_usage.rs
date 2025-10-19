@@ -5,7 +5,7 @@ This example demonstrates the parallel processing functionality of the Lodash-RS
 */
 
 #[cfg(feature = "parallel")]
-use lodash_rs::prelude::*;
+use rust_lodash::prelude::*;
 #[cfg(feature = "parallel")]
 use std::time::Instant;
 

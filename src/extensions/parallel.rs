@@ -18,7 +18,7 @@ use crate::utils::{LodashError, Result};
 /// # Examples
 /// 
 /// ```
-/// use lodash_rs::extensions::parallel::map_parallel;
+/// use rust_lodash::extensions::parallel::map_parallel;
 /// 
 /// let numbers = vec![1, 2, 3, 4, 5];
 /// let doubled = map_parallel(&numbers, |x| x * 2);
@@ -39,7 +39,7 @@ where
 /// # Examples
 /// 
 /// ```
-/// use lodash_rs::extensions::parallel::filter_parallel;
+/// use rust_lodash::extensions::parallel::filter_parallel;
 /// 
 /// let numbers = vec![1, 2, 3, 4, 5];
 /// let evens = filter_parallel(&numbers, |x| x % 2 == 0);
@@ -62,7 +62,7 @@ where
 /// # Examples
 /// 
 /// ```
-/// use lodash_rs::extensions::parallel::reduce_parallel;
+/// use rust_lodash::extensions::parallel::reduce_parallel;
 /// 
 /// let numbers = vec![1, 2, 3, 4, 5];
 /// let sum = reduce_parallel(&numbers, |acc, x| acc + x, 0);
@@ -83,7 +83,7 @@ where
 /// # Examples
 /// 
 /// ```
-/// use lodash_rs::extensions::parallel::for_each_parallel;
+/// use rust_lodash::extensions::parallel::for_each_parallel;
 /// 
 /// let numbers = vec![1, 2, 3, 4, 5];
 /// let mut sum = 0;
@@ -104,7 +104,7 @@ where
 /// # Examples
 /// 
 /// ```
-/// use lodash_rs::extensions::parallel::find_parallel;
+/// use rust_lodash::extensions::parallel::find_parallel;
 /// 
 /// let numbers = vec![1, 2, 3, 4, 5];
 /// let first_even = find_parallel(&numbers, |x| x % 2 == 0);
@@ -124,7 +124,7 @@ where
 /// # Examples
 /// 
 /// ```
-/// use lodash_rs::extensions::parallel::every_parallel;
+/// use rust_lodash::extensions::parallel::every_parallel;
 /// 
 /// let numbers = vec![2, 4, 6, 8];
 /// let all_even = every_parallel(&numbers, |x| x % 2 == 0);
@@ -144,7 +144,7 @@ where
 /// # Examples
 /// 
 /// ```
-/// use lodash_rs::extensions::parallel::some_parallel;
+/// use rust_lodash::extensions::parallel::some_parallel;
 /// 
 /// let numbers = vec![1, 3, 5, 7];
 /// let has_even = some_parallel(&numbers, |x| x % 2 == 0);
@@ -166,7 +166,7 @@ impl<T> Collection<T> {
     /// # Examples
     /// 
     /// ```
-    /// use lodash_rs::collection::Collection;
+    /// use rust_lodash::collection::Collection;
     /// 
     /// let collection = Collection::new(vec![1, 2, 3, 4, 5]);
     /// let doubled = collection.map_parallel(|x| x * 2);
@@ -186,7 +186,7 @@ impl<T> Collection<T> {
     /// # Examples
     /// 
     /// ```
-    /// use lodash_rs::collection::Collection;
+    /// use rust_lodash::collection::Collection;
     /// 
     /// let collection = Collection::new(vec![1, 2, 3, 4, 5]);
     /// let evens = collection.filter_parallel(|x| x % 2 == 0);
@@ -205,7 +205,7 @@ impl<T> Collection<T> {
     /// # Examples
     /// 
     /// ```
-    /// use lodash_rs::collection::Collection;
+    /// use rust_lodash::collection::Collection;
     /// 
     /// let collection = Collection::new(vec![1, 2, 3, 4, 5]);
     /// let sum = collection.reduce_parallel(|acc, x| acc + x, 0);
@@ -225,7 +225,7 @@ impl<T> Collection<T> {
     /// # Examples
     /// 
     /// ```
-    /// use lodash_rs::collection::Collection;
+    /// use rust_lodash::collection::Collection;
     /// 
     /// let collection = Collection::new(vec![1, 2, 3, 4, 5]);
     /// let mut sum = 0;
@@ -245,7 +245,7 @@ impl<T> Collection<T> {
     /// # Examples
     /// 
     /// ```
-    /// use lodash_rs::collection::Collection;
+    /// use rust_lodash::collection::Collection;
     /// 
     /// let collection = Collection::new(vec![1, 2, 3, 4, 5]);
     /// let first_even = collection.find_parallel(|x| x % 2 == 0);
@@ -264,7 +264,7 @@ impl<T> Collection<T> {
     /// # Examples
     /// 
     /// ```
-    /// use lodash_rs::collection::Collection;
+    /// use rust_lodash::collection::Collection;
     /// 
     /// let collection = Collection::new(vec![2, 4, 6, 8]);
     /// let all_even = collection.every_parallel(|x| x % 2 == 0);
@@ -283,7 +283,7 @@ impl<T> Collection<T> {
     /// # Examples
     /// 
     /// ```
-    /// use lodash_rs::collection::Collection;
+    /// use rust_lodash::collection::Collection;
     /// 
     /// let collection = Collection::new(vec![1, 3, 5, 7]);
     /// let has_even = collection.some_parallel(|x| x % 2 == 0);

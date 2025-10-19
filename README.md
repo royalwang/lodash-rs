@@ -1,7 +1,7 @@
-# lodash-rs
+# rust-lodash
 
-[![Crates.io](https://img.shields.io/crates/v/lodash-rs.svg)](https://crates.io/crates/lodash-rs)
-[![Documentation](https://docs.rs/lodash-rs/badge.svg)](https://docs.rs/lodash-rs)
+[![Crates.io](https://img.shields.io/crates/v/rust-lodash.svg)](https://crates.io/crates/rust-lodash)
+[![Documentation](https://docs.rs/rust-lodash/badge.svg)](https://docs.rs/rust-lodash)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![CI](https://github.com/royalwang/lodash-rs/workflows/CI/badge.svg)](https://github.com/royalwang/lodash-rs/actions)
 
@@ -23,13 +23,13 @@ Add this to your `Cargo.toml`:
 
 ```toml
 [dependencies]
-lodash-rs = "0.1.0"
+rust-lodash = "0.1.0"
 ```
 
 ### Basic Usage
 
 ```rust
-use lodash_rs::prelude::*;
+use rust_lodash::prelude::*;
 
 // Basic operations
 let doubled = map(&[1, 2, 3, 4], |x| x * 2);
@@ -54,11 +54,11 @@ let sum = reduce(&numbers, |acc, x| acc + x, 0);
 
 ```toml
 [dependencies]
-lodash-rs = { version = "0.1.0", features = ["async"] }
+rust-lodash = { version = "0.1.0", features = ["async"] }
 ```
 
 ```rust
-use lodash_rs::prelude::*;
+use rust_lodash::prelude::*;
 
 // Async operations (requires async feature)
 // let async_result = map_async(&[1, 2, 3], |x| async move { x * 2 }).await;
@@ -69,11 +69,11 @@ use lodash_rs::prelude::*;
 
 ```toml
 [dependencies]
-lodash-rs = { version = "0.1.0", features = ["parallel"] }
+rust-lodash = { version = "0.1.0", features = ["parallel"] }
 ```
 
 ```rust
-use lodash_rs::prelude::*;
+use rust_lodash::prelude::*;
 
 // Parallel operations (requires parallel feature)
 // let result = map_parallel(&[1, 2, 3, 4], |x| x * 2);
@@ -84,7 +84,7 @@ use lodash_rs::prelude::*;
 
 ```toml
 [dependencies]
-lodash-rs = { version = "0.1.0", features = ["wasm"] }
+rust-lodash = { version = "0.1.0", features = ["wasm"] }
 ```
 
 ## API Reference
@@ -123,7 +123,7 @@ lodash-rs = { version = "0.1.0", features = ["wasm"] }
 ### Chain API
 
 ```rust
-use lodash_rs::chain;
+use rust_lodash::chain;
 
 let result = chain(&[1, 2, 3, 4, 5, 6, 7, 8, 9, 10])
     .filter(|x| x % 2 == 0)    // [2, 4, 6, 8, 10]

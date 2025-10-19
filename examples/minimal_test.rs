@@ -1,6 +1,6 @@
 //! Minimal test to verify the library compiles and works.
 
-use lodash_rs::collection::Collection;
+use rust_lodash::collection::Collection;
 
 fn main() {
     println!("Testing lodash-rs basic functionality...");

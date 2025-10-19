@@ -1,13 +1,13 @@
 [package]
-name = "lodash-rs"
+name = "rust-lodash"
 version = "0.1.0"
 edition = "2021"
 authors = ["royalwang <royalwang@example.com>"]
 description = "A high-performance, type-safe Rust implementation of Lodash collection methods with zero-cost abstractions"
 license = "MIT"
-repository = "https://github.com/royalwang/lodash-rs"
-homepage = "https://github.com/royalwang/lodash-rs"
-documentation = "https://docs.rs/lodash-rs"
+repository = "https://github.com/royalwang/rust-lodash"
+homepage = "https://github.com/royalwang/rust-lodash"
+documentation = "https://docs.rs/rust-lodash"
 readme = "README.md"
 keywords = [
     "lodash", 
@@ -74,6 +74,6 @@ name = "collection_benchmarks"
 harness = false
 
 [lib]
-name = "lodash_rs"
+name = "rust_lodash"
 path = "src/lib.rs"
 doc = true

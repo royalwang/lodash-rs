@@ -13,7 +13,7 @@ use crate::utils::{LodashError, Result, Predicate, Mapper, Reducer};
 /// # Examples
 /// 
 /// ```
-/// use lodash_rs::collection::iteration::each;
+/// use rust_lodash::collection::iteration::each;
 /// 
 /// let mut sum = 0;
 /// each(&[1, 2, 3], |x| sum += x);
@@ -33,7 +33,7 @@ where
 /// # Examples
 /// 
 /// ```
-/// use lodash_rs::collection::iteration::for_each;
+/// use rust_lodash::collection::iteration::for_each;
 /// 
 /// let mut sum = 0;
 /// for_each(&[1, 2, 3], |x| sum += x);
@@ -51,7 +51,7 @@ where
 /// # Examples
 /// 
 /// ```
-/// use lodash_rs::collection::iteration::map;
+/// use rust_lodash::collection::iteration::map;
 /// 
 /// let doubled = map(&[1, 2, 3], |x| x * 2);
 /// assert_eq!(doubled, vec![2, 4, 6]);
@@ -73,7 +73,7 @@ where
 /// # Examples
 /// 
 /// ```
-/// use lodash_rs::collection::iteration::filter;
+/// use rust_lodash::collection::iteration::filter;
 /// 
 /// let evens = filter(&[1, 2, 3, 4, 5], |x| x % 2 == 0);
 /// assert_eq!(evens, vec![2, 4]);
@@ -96,7 +96,7 @@ where
 /// # Examples
 /// 
 /// ```
-/// use lodash_rs::collection::iteration::reduce;
+/// use rust_lodash::collection::iteration::reduce;
 /// 
 /// let sum = reduce(&[1, 2, 3, 4], |acc, x| acc + x, 0);
 /// assert_eq!(sum, 10);
@@ -118,7 +118,7 @@ where
 /// # Examples
 /// 
 /// ```
-/// use lodash_rs::collection::iteration::reduce_right;
+/// use rust_lodash::collection::iteration::reduce_right;
 /// 
 /// let result = reduce_right(&["a", "b", "c"], |acc, x| format!("{}{}", acc, x), String::new());
 /// assert_eq!(result, "cba");
@@ -136,7 +136,7 @@ where
 /// # Examples
 /// 
 /// ```
-/// use lodash_rs::collection::iteration::for_each_right;
+/// use rust_lodash::collection::iteration::for_each_right;
 /// 
 /// let mut result = Vec::new();
 /// for_each_right(&[1, 2, 3], |x| result.push(*x));
@@ -158,7 +158,7 @@ impl<T> Collection<T> {
     /// # Examples
     /// 
     /// ```
-    /// use lodash_rs::collection::Collection;
+    /// use rust_lodash::collection::Collection;
     /// 
     /// let collection = Collection::new(vec![1, 2, 3]);
     /// let mut sum = 0;
@@ -177,7 +177,7 @@ impl<T> Collection<T> {
     /// # Examples
     /// 
     /// ```
-    /// use lodash_rs::collection::Collection;
+    /// use rust_lodash::collection::Collection;
     /// 
     /// let collection = Collection::new(vec![1, 2, 3]);
     /// let doubled = collection.map(|x| x * 2);
@@ -196,7 +196,7 @@ impl<T> Collection<T> {
     /// # Examples
     /// 
     /// ```
-    /// use lodash_rs::collection::Collection;
+    /// use rust_lodash::collection::Collection;
     /// 
     /// let collection = Collection::new(vec![1, 2, 3, 4, 5]);
     /// let evens = collection.filter(|x| x % 2 == 0);
@@ -216,7 +216,7 @@ impl<T> Collection<T> {
     /// # Examples
     /// 
     /// ```
-    /// use lodash_rs::collection::Collection;
+    /// use rust_lodash::collection::Collection;
     /// 
     /// let collection = Collection::new(vec![1, 2, 3, 4]);
     /// let sum = collection.reduce(|acc, x| acc + x, 0);
@@ -234,7 +234,7 @@ impl<T> Collection<T> {
     /// # Examples
     /// 
     /// ```
-    /// use lodash_rs::collection::Collection;
+    /// use rust_lodash::collection::Collection;
     /// 
     /// let collection = Collection::new(vec!["a", "b", "c"]);
     /// let result = collection.reduce_right(|acc, x| format!("{}{}", acc, x), String::new());
@@ -252,7 +252,7 @@ impl<T> Collection<T> {
     /// # Examples
     /// 
     /// ```
-    /// use lodash_rs::collection::Collection;
+    /// use rust_lodash::collection::Collection;
     /// 
     /// let collection = Collection::new(vec![1, 2, 3]);
     /// let mut result = Vec::new();

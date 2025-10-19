@@ -1,7 +1,7 @@
 //! Basic tests for lodash-rs core functionality
 
-use lodash_rs::collection::Collection;
-use lodash_rs::chain::chain;
+use rust_lodash::collection::Collection;
+use rust_lodash::chain::chain;
 
 #[test]
 fn test_collection_creation() {

@@ -15,7 +15,7 @@ use rand::thread_rng;
 /// # Examples
 /// 
 /// ```
-/// use lodash_rs::collection::operation::size;
+/// use rust_lodash::collection::operation::size;
 /// 
 /// let numbers = vec![1, 2, 3, 4, 5];
 /// assert_eq!(size(&numbers), 5);
@@ -32,7 +32,7 @@ pub fn size<T>(collection: &[T]) -> usize {
 /// # Examples
 /// 
 /// ```
-/// use lodash_rs::collection::operation::shuffle;
+/// use rust_lodash::collection::operation::shuffle;
 /// 
 /// let numbers = vec![1, 2, 3, 4, 5];
 /// let shuffled = shuffle(&numbers);
@@ -53,7 +53,7 @@ where
 /// # Examples
 /// 
 /// ```
-/// use lodash_rs::collection::operation::sample;
+/// use rust_lodash::collection::operation::sample;
 /// 
 /// let numbers = vec![1, 2, 3, 4, 5];
 /// let random = sample(&numbers);
@@ -71,7 +71,7 @@ pub fn sample<T>(collection: &[T]) -> Option<&T> {
 /// # Examples
 /// 
 /// ```
-/// use lodash_rs::collection::operation::sample_size;
+/// use rust_lodash::collection::operation::sample_size;
 /// 
 /// let numbers = vec![1, 2, 3, 4, 5];
 /// let samples = sample_size(&numbers, 3);
@@ -100,7 +100,7 @@ impl<T> Collection<T> {
     /// # Examples
     /// 
     /// ```
-    /// use lodash_rs::collection::Collection;
+    /// use rust_lodash::collection::Collection;
     /// 
     /// let collection = Collection::new(vec![1, 2, 3, 4, 5]);
     /// assert_eq!(collection.size(), 5);
@@ -114,7 +114,7 @@ impl<T> Collection<T> {
     /// # Examples
     /// 
     /// ```
-    /// use lodash_rs::collection::Collection;
+    /// use rust_lodash::collection::Collection;
     /// 
     /// let collection = Collection::new(vec![1, 2, 3, 4, 5]);
     /// let shuffled = collection.shuffle();
@@ -132,7 +132,7 @@ impl<T> Collection<T> {
     /// # Examples
     /// 
     /// ```
-    /// use lodash_rs::collection::Collection;
+    /// use rust_lodash::collection::Collection;
     /// 
     /// let collection = Collection::new(vec![1, 2, 3, 4, 5]);
     /// let random = collection.sample();
@@ -147,7 +147,7 @@ impl<T> Collection<T> {
     /// # Examples
     /// 
     /// ```
-    /// use lodash_rs::collection::Collection;
+    /// use rust_lodash::collection::Collection;
     /// 
     /// let collection = Collection::new(vec![1, 2, 3, 4, 5]);
     /// let samples = collection.sample_size(3);

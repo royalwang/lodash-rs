@@ -1,6 +1,6 @@
-# Contributing to lodash-rs
+# Contributing to rust-lodash
 
-Thank you for your interest in contributing to lodash-rs! This document provides guidelines and information for contributors.
+Thank you for your interest in contributing to rust-lodash! This document provides guidelines and information for contributors.
 
 ## Getting Started
 
@@ -15,8 +15,8 @@ Thank you for your interest in contributing to lodash-rs! This document provides
 1. Fork the repository on GitHub
 2. Clone your fork locally:
    ```bash
-   git clone https://github.com/your-username/lodash-rs.git
-   cd lodash-rs
+git clone https://github.com/your-username/rust-lodash.git
+cd rust-lodash
    ```
 3. Add the upstream repository:
    ```bash
@@ -253,4 +253,4 @@ Releases are handled by maintainers:
 - Join the Rust community Discord
 - Read the Rust documentation
 
-Thank you for contributing to lodash-rs! 🦀
+Thank you for contributing to rust-lodash! 🦀

@@ -5,7 +5,7 @@ This example demonstrates the async functionality of the Lodash-RS library.
 */
 
 #[cfg(feature = "async")]
-use lodash_rs::prelude::*;
+use rust_lodash::prelude::*;
 #[cfg(feature = "async")]
 use tokio;
 

@@ -1,5 +1,5 @@
 use criterion::{black_box, criterion_group, criterion_main, Criterion};
-use lodash_rs::prelude::*;
+use rust_lodash::prelude::*;
 use rand::seq::SliceRandom;
 use rand::thread_rng;
 

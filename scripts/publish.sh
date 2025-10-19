@@ -1,9 +1,9 @@
 #!/bin/bash
 
-# Publish script for lodash-rs
+# Publish script for rust-lodash
 set -e
 
-echo "🚀 Starting publish process for lodash-rs..."
+echo "🚀 Starting publish process for rust-lodash..."
 
 # Check if we're on the main branch
 current_branch=$(git branch --show-current)

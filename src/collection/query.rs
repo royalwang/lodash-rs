@@ -14,7 +14,7 @@ use crate::utils::{LodashError, Result, Predicate};
 /// # Examples
 /// 
 /// ```
-/// use lodash_rs::collection::query::find;
+/// use rust_lodash::collection::query::find;
 /// 
 /// let numbers = vec![1, 2, 3, 4, 5];
 /// let first_even = find(&numbers, |x| x % 2 == 0);
@@ -36,7 +36,7 @@ where
 /// # Examples
 /// 
 /// ```
-/// use lodash_rs::collection::query::find_last;
+/// use rust_lodash::collection::query::find_last;
 /// 
 /// let numbers = vec![1, 2, 3, 4, 5];
 /// let last_even = find_last(&numbers, |x| x % 2 == 0);
@@ -54,7 +54,7 @@ where
 /// # Examples
 /// 
 /// ```
-/// use lodash_rs::collection::query::includes;
+/// use rust_lodash::collection::query::includes;
 /// 
 /// let numbers = vec![1, 2, 3, 4, 5];
 /// assert!(includes(&numbers, &3));
@@ -72,7 +72,7 @@ where
 /// # Examples
 /// 
 /// ```
-/// use lodash_rs::collection::query::every;
+/// use rust_lodash::collection::query::every;
 /// 
 /// let numbers = vec![2, 4, 6, 8];
 /// assert!(every(&numbers, |x| x % 2 == 0));
@@ -92,7 +92,7 @@ where
 /// # Examples
 /// 
 /// ```
-/// use lodash_rs::collection::query::some;
+/// use rust_lodash::collection::query::some;
 /// 
 /// let numbers = vec![1, 2, 3, 4, 5];
 /// assert!(some(&numbers, |x| x % 2 == 0));
@@ -114,7 +114,7 @@ where
 /// # Examples
 /// 
 /// ```
-/// use lodash_rs::collection::query::count_by;
+/// use rust_lodash::collection::query::count_by;
 /// use std::collections::HashMap;
 /// 
 /// let numbers = vec![6.1, 4.2, 6.3];
@@ -142,7 +142,7 @@ where
 /// # Examples
 /// 
 /// ```
-/// use lodash_rs::collection::query::partition;
+/// use rust_lodash::collection::query::partition;
 /// 
 /// let numbers = vec![1, 2, 3, 4, 5];
 /// let (evens, odds) = partition(&numbers, |x| x % 2 == 0);
@@ -176,7 +176,7 @@ impl<T> Collection<T> {
     /// # Examples
     /// 
     /// ```
-    /// use lodash_rs::collection::Collection;
+    /// use rust_lodash::collection::Collection;
     /// 
     /// let collection = Collection::new(vec![1, 2, 3, 4, 5]);
     /// let first_even = collection.find(|x| x % 2 == 0);
@@ -194,7 +194,7 @@ impl<T> Collection<T> {
     /// # Examples
     /// 
     /// ```
-    /// use lodash_rs::collection::Collection;
+    /// use rust_lodash::collection::Collection;
     /// 
     /// let collection = Collection::new(vec![1, 2, 3, 4, 5]);
     /// let last_even = collection.find_last(|x| x % 2 == 0);
@@ -212,7 +212,7 @@ impl<T> Collection<T> {
     /// # Examples
     /// 
     /// ```
-    /// use lodash_rs::collection::Collection;
+    /// use rust_lodash::collection::Collection;
     /// 
     /// let collection = Collection::new(vec![1, 2, 3, 4, 5]);
     /// assert!(collection.includes(&3));
@@ -230,7 +230,7 @@ impl<T> Collection<T> {
     /// # Examples
     /// 
     /// ```
-    /// use lodash_rs::collection::Collection;
+    /// use rust_lodash::collection::Collection;
     /// 
     /// let collection = Collection::new(vec![2, 4, 6, 8]);
     /// assert!(collection.every(|x| x % 2 == 0));
@@ -247,7 +247,7 @@ impl<T> Collection<T> {
     /// # Examples
     /// 
     /// ```
-    /// use lodash_rs::collection::Collection;
+    /// use rust_lodash::collection::Collection;
     /// 
     /// let collection = Collection::new(vec![1, 2, 3, 4, 5]);
     /// assert!(collection.some(|x| x % 2 == 0));
@@ -265,7 +265,7 @@ impl<T> Collection<T> {
     /// # Examples
     /// 
     /// ```
-    /// use lodash_rs::collection::Collection;
+    /// use rust_lodash::collection::Collection;
     /// use std::collections::HashMap;
     /// 
     /// let collection = Collection::new(vec![6.1, 4.2, 6.3]);
@@ -285,7 +285,7 @@ impl<T> Collection<T> {
     /// # Examples
     /// 
     /// ```
-    /// use lodash_rs::collection::Collection;
+    /// use rust_lodash::collection::Collection;
     /// 
     /// let collection = Collection::new(vec![1, 2, 3, 4, 5]);
     /// let (evens, odds) = collection.partition(|x| x % 2 == 0);

@@ -17,7 +17,7 @@ A type-safe, high-performance Rust implementation of Lodash collection methods w
 ## Quick Start
 
 ```rust
-use lodash_rs::prelude::*;
+use rust_lodash::prelude::*;
 
 // Basic usage
 let doubled = map(&[1, 2, 3, 4], |x| x * 2);

@@ -1,6 +1,6 @@
-# lodash-rs API Reference
+# rust-lodash API Reference
 
-This document provides a comprehensive reference for all lodash-rs APIs.
+This document provides a comprehensive reference for all rust-lodash APIs.
 
 ## Table of Contents
 
@@ -23,7 +23,7 @@ This document provides a comprehensive reference for all lodash-rs APIs.
 Creates an array of values by running each element in collection through iteratee.
 
 ```rust
-use lodash_rs::map;
+use rust_lodash::map;
 
 let numbers = vec![1, 2, 3, 4, 5];
 let doubled = map(&numbers, |x| x * 2);
@@ -41,7 +41,7 @@ let doubled = map(&numbers, |x| x * 2);
 Iterates over elements of collection, returning an array of all elements predicate returns truthy for.
 
 ```rust
-use lodash_rs::filter;
+use rust_lodash::filter;
 
 let numbers = vec![1, 2, 3, 4, 5];
 let evens = filter(&numbers, |x| x % 2 == 0);
@@ -59,7 +59,7 @@ let evens = filter(&numbers, |x| x % 2 == 0);
 Reduces collection to a value which is the accumulated result of running each element in collection through iteratee.
 
 ```rust
-use lodash_rs::reduce;
+use rust_lodash::reduce;
 
 let numbers = vec![1, 2, 3, 4, 5];
 let sum = reduce(&numbers, |acc, x| acc + x, 0);
@@ -78,7 +78,7 @@ let sum = reduce(&numbers, |acc, x| acc + x, 0);
 Iterates over elements of collection and invokes iteratee for each element.
 
 ```rust
-use lodash_rs::forEach;
+use rust_lodash::forEach;
 
 let numbers = vec![1, 2, 3];
 let mut sum = 0;
@@ -97,7 +97,7 @@ forEach(&numbers, |x| sum += x);
 This method is like `forEach` except that it iterates over elements of collection from right to left.
 
 ```rust
-use lodash_rs::forEachRight;
+use rust_lodash::forEachRight;
 
 let numbers = vec![1, 2, 3];
 let mut result = Vec::new();
@@ -112,7 +112,7 @@ forEachRight(&numbers, |x| result.push(*x));
 Iterates over elements of collection, returning the first element predicate returns truthy for.
 
 ```rust
-use lodash_rs::find;
+use rust_lodash::find;
 
 let numbers = vec![1, 2, 3, 4, 5];
 let first_even = find(&numbers, |x| x % 2 == 0);
@@ -130,7 +130,7 @@ let first_even = find(&numbers, |x| x % 2 == 0);
 This method is like `find` except that it iterates over elements of collection from right to left.
 
 ```rust
-use lodash_rs::findLast;
+use rust_lodash::findLast;
 
 let numbers = vec![1, 2, 3, 4, 5];
 let last_even = findLast(&numbers, |x| x % 2 == 0);
@@ -142,7 +142,7 @@ let last_even = findLast(&numbers, |x| x % 2 == 0);
 Checks if value is in collection.
 
 ```rust
-use lodash_rs::includes;
+use rust_lodash::includes;
 
 let numbers = vec![1, 2, 3, 4, 5];
 let has_three = includes(&numbers, &3);
@@ -160,7 +160,7 @@ let has_three = includes(&numbers, &3);
 Checks if predicate returns truthy for all elements of collection.
 
 ```rust
-use lodash_rs::every;
+use rust_lodash::every;
 
 let numbers = vec![2, 4, 6, 8];
 let all_even = every(&numbers, |x| x % 2 == 0);
@@ -178,7 +178,7 @@ let all_even = every(&numbers, |x| x % 2 == 0);
 Checks if predicate returns truthy for any element of collection.
 
 ```rust
-use lodash_rs::some;
+use rust_lodash::some;
 
 let numbers = vec![1, 2, 3, 4, 5];
 let has_even = some(&numbers, |x| x % 2 == 0);
@@ -190,7 +190,7 @@ let has_even = some(&numbers, |x| x % 2 == 0);
 Creates an object composed of keys generated from the results of running each element of collection thru iteratee.
 
 ```rust
-use lodash_rs::countBy;
+use rust_lodash::countBy;
 use std::collections::HashMap;
 
 let numbers = vec![6.1, 4.2, 6.3];
@@ -205,7 +205,7 @@ let counts = countBy(&numbers, |x| (*x as f64).floor() as i32);
 Creates an array of elements split into two groups, the first of which contains elements predicate returns truthy for.
 
 ```rust
-use lodash_rs::partition;
+use rust_lodash::partition;
 
 let numbers = vec![1, 2, 3, 4, 5];
 let (evens, odds) = partition(&numbers, |x| x % 2 == 0);
@@ -221,7 +221,7 @@ let (evens, odds) = partition(&numbers, |x| x % 2 == 0);
 Creates an object composed of keys generated from the results of running each element of collection thru iteratee.
 
 ```rust
-use lodash_rs::groupBy;
+use rust_lodash::groupBy;
 use std::collections::HashMap;
 
 let users = vec![
@@ -240,7 +240,7 @@ let grouped = groupBy(&users, |(_, _, role)| role.to_string());
 Creates an object composed of keys generated from the results of running each element of collection thru iteratee.
 
 ```rust
-use lodash_rs::keyBy;
+use rust_lodash::keyBy;
 use std::collections::HashMap;
 
 let users = vec![
@@ -258,7 +258,7 @@ let keyed = keyBy(&users, |(name, _, _)| name.to_string());
 Creates an array of elements, sorted in ascending order by the results of running each element in a collection thru each iteratee.
 
 ```rust
-use lodash_rs::sortBy;
+use rust_lodash::sortBy;
 
 let users = vec![
     ("john", 30, "engineer"),
@@ -276,7 +276,7 @@ let sorted = sortBy(&users, |(_, age, _)| *age);
 This method is like `sortBy` except that it allows specifying the sort orders of the iteratees to sort by.
 
 ```rust
-use lodash_rs::orderBy;
+use rust_lodash::orderBy;
 
 let users = vec![
     ("john", 30, "engineer"),
@@ -295,7 +295,7 @@ let ordered = orderBy(&users, |(_, age, _)| *age, false); // descending
 Invokes the method at path of each element in collection.
 
 ```rust
-use lodash_rs::invoke;
+use rust_lodash::invoke;
 
 let names = vec!["john", "jane", "bob"];
 let upper_names = invoke(&names, |name| name.to_uppercase());
@@ -309,7 +309,7 @@ let upper_names = invoke(&names, |name| name.to_uppercase());
 Creates an array of shuffled values, using a version of the Fisher-Yates shuffle.
 
 ```rust
-use lodash_rs::shuffle;
+use rust_lodash::shuffle;
 
 let numbers = vec![1, 2, 3, 4, 5];
 let shuffled = shuffle(&numbers);
@@ -323,7 +323,7 @@ let shuffled = shuffle(&numbers);
 Gets a random element from collection.
 
 ```rust
-use lodash_rs::sample;
+use rust_lodash::sample;
 
 let numbers = vec![1, 2, 3, 4, 5];
 let random = sample(&numbers);
@@ -337,7 +337,7 @@ let random = sample(&numbers);
 Gets n random elements at unique keys from collection up to the size of collection.
 
 ```rust
-use lodash_rs::sampleSize;
+use rust_lodash::sampleSize;
 
 let numbers = vec![1, 2, 3, 4, 5];
 let samples = sampleSize(&numbers, 3);
@@ -354,7 +354,7 @@ let samples = sampleSize(&numbers, 3);
 Gets the size of collection.
 
 ```rust
-use lodash_rs::size;
+use rust_lodash::size;
 
 let numbers = vec![1, 2, 3, 4, 5];
 let length = size(&numbers);
@@ -370,7 +370,7 @@ The Chain API provides a fluent interface for method chaining.
 ### Basic Usage
 
 ```rust
-use lodash_rs::chain;
+use rust_lodash::chain;
 
 let result = chain(&[1, 2, 3, 4, 5, 6, 7, 8, 9, 10])
     .filter(|x| x % 2 == 0)    // [2, 4, 6, 8, 10]
@@ -398,7 +398,7 @@ The `Collection<T>` type provides an object-oriented interface to collection ope
 ### Creating Collections
 
 ```rust
-use lodash_rs::Collection;
+use rust_lodash::Collection;
 
 // From vector
 let collection = Collection::new(vec![1, 2, 3, 4, 5]);
@@ -441,7 +441,7 @@ lodash-rs uses custom error types for better error handling.
 ### LodashError
 
 ```rust
-use lodash_rs::LodashError;
+use rust_lodash::LodashError;
 
 // Error types
 LodashError::InvalidInput { message: String }
@@ -455,7 +455,7 @@ LodashError::Custom { message: String }
 ### Result Type
 
 ```rust
-use lodash_rs::Result;
+use rust_lodash::Result;
 
 // Most operations return Result<T, LodashError>
 let result: Result<Vec<i32>> = some_operation();
@@ -472,7 +472,7 @@ lodash-rs provides utilities for safe type conversion.
 ### Safe Conversion
 
 ```rust
-use lodash_rs::safe_convert;
+use rust_lodash::safe_convert;
 
 let number_str = "42";
 let number: Result<i32> = safe_convert(number_str);
