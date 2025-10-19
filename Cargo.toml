@@ -1,0 +1,50 @@
+[package]
+name = "lodash-rs"
+version = "0.1.0"
+edition = "2021"
+authors = ["Your Name <your.email@example.com>"]
+description = "A high-performance, type-safe Rust implementation of Lodash collection methods"
+license = "MIT"
+repository = "https://github.com/your-username/lodash-rs"
+keywords = ["lodash", "collections", "functional", "iterator", "utility"]
+categories = ["data-structures", "algorithms"]
+
+[dependencies]
+# Async support
+futures = "0.3"
+tokio = { version = "1.0", features = ["full"], optional = true }
+
+# Parallel processing
+rayon = { version = "1.7", optional = true }
+
+# Serialization (for complex data types)
+serde = { version = "1.0", features = ["derive"], optional = true }
+
+# WASM support
+wasm-bindgen = { version = "0.2", optional = true }
+js-sys = { version = "0.3", optional = true }
+web-sys = { version = "0.3", optional = true }
+
+# Utilities
+rand = "0.8"
+
+[dev-dependencies]
+criterion = "0.5"
+proptest = "1.0"
+tokio-test = "0.4"
+
+[features]
+default = ["async"]
+async = ["tokio"]
+parallel = ["rayon"]
+serialize = ["serde"]
+wasm = ["wasm-bindgen", "js-sys", "web-sys"]
+no-std = []
+
+# [[bench]]
+# name = "collection_benchmarks"
+# harness = false
+
+[lib]
+name = "lodash_rs"
+path = "src/lib.rs"
