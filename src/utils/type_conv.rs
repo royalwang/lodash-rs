@@ -285,8 +285,8 @@ mod tests {
     #[test]
     fn test_predicate() {
         let pred = |x: &i32| *x > 5;
-        assert!(pred.apply(&6));
-        assert!(!pred.apply(&4));
+        assert!(Predicate::apply(&pred, &6));
+        assert!(!Predicate::apply(&pred, &4));
     }
 
     #[test]

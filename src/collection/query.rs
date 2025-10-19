@@ -20,7 +20,7 @@ use crate::utils::{LodashError, Result, Predicate};
 /// let first_even = find(&numbers, |x| x % 2 == 0);
 /// assert_eq!(first_even, Some(&2));
 /// 
-/// let not_found = find(&numbers, |x| x > 10);
+/// let not_found = find(&numbers, |x| *x > 10);
 /// assert_eq!(not_found, None);
 /// ```
 pub fn find<T, F>(collection: &[T], predicate: F) -> Option<&T>
@@ -94,7 +94,7 @@ where
 /// ```
 /// use lodash_rs::collection::query::some;
 /// 
-/// let numbers = vec![1, 3, 5, 7];
+/// let numbers = vec![1, 2, 3, 4, 5];
 /// assert!(some(&numbers, |x| x % 2 == 0));
 /// 
 /// let odds = vec![1, 3, 5, 7];
@@ -118,7 +118,7 @@ where
 /// use std::collections::HashMap;
 /// 
 /// let numbers = vec![6.1, 4.2, 6.3];
-/// let counts = count_by(&numbers, |x| x.floor() as i32);
+/// let counts = count_by(&numbers, |x| (*x as f64).floor() as i32);
 /// assert_eq!(counts.get(&6), Some(&2));
 /// assert_eq!(counts.get(&4), Some(&1));
 /// ```
@@ -249,7 +249,7 @@ impl<T> Collection<T> {
     /// ```
     /// use lodash_rs::collection::Collection;
     /// 
-    /// let collection = Collection::new(vec![1, 3, 5, 7]);
+    /// let collection = Collection::new(vec![1, 2, 3, 4, 5]);
     /// assert!(collection.some(|x| x % 2 == 0));
     /// ```
     pub fn some<F>(&self, predicate: F) -> bool
@@ -269,7 +269,7 @@ impl<T> Collection<T> {
     /// use std::collections::HashMap;
     /// 
     /// let collection = Collection::new(vec![6.1, 4.2, 6.3]);
-    /// let counts = collection.count_by(|x| x.floor() as i32);
+    /// let counts = collection.count_by(|x| (*x as f64).floor() as i32);
     /// assert_eq!(counts.get(&6), Some(&2));
     /// ```
     pub fn count_by<K, F>(&self, iteratee: F) -> std::collections::HashMap<K, usize>
@@ -312,7 +312,7 @@ mod tests {
         let first_even = find(&numbers, |x| x % 2 == 0);
         assert_eq!(first_even, Some(&2));
 
-        let not_found = find(&numbers, |x| x > 10);
+        let not_found = find(&numbers, |x| *x > 10);
         assert_eq!(not_found, None);
     }
 
@@ -341,7 +341,7 @@ mod tests {
 
     #[test]
     fn test_some() {
-        let numbers = vec![1, 3, 5, 7];
+        let numbers = vec![1, 2, 3, 4, 5];
         assert!(some(&numbers, |x| x % 2 == 0));
 
         let odds = vec![1, 3, 5, 7];
@@ -351,7 +351,7 @@ mod tests {
     #[test]
     fn test_count_by() {
         let numbers = vec![6.1, 4.2, 6.3];
-        let counts = count_by(&numbers, |x| x.floor() as i32);
+        let counts = count_by(&numbers, |x| (*x as f64).floor() as i32);
         assert_eq!(counts.get(&6), Some(&2));
         assert_eq!(counts.get(&4), Some(&1));
     }
@@ -393,14 +393,17 @@ mod tests {
 
     #[test]
     fn test_collection_some() {
-        let collection = Collection::new(vec![1, 3, 5, 7]);
+        let collection = Collection::new(vec![1, 2, 3, 4, 5]);
         assert!(collection.some(|x| x % 2 == 0));
+        
+        let odds_collection = Collection::new(vec![1, 3, 5, 7]);
+        assert!(!odds_collection.some(|x| x % 2 == 0));
     }
 
     #[test]
     fn test_collection_count_by() {
         let collection = Collection::new(vec![6.1, 4.2, 6.3]);
-        let counts = collection.count_by(|x| x.floor() as i32);
+        let counts = collection.count_by(|x| (*x as f64).floor() as i32);
         assert_eq!(counts.get(&6), Some(&2));
     }
 

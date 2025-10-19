@@ -21,7 +21,7 @@ use crate::utils::{LodashError, Result};
 /// let result = chain(&[1, 2, 3, 4, 5])
 ///     .filter(|x| x % 2 == 0)
 ///     .map(|x| x * 3)
-///     .collect::<Vec<_>>();
+///     .collect();
 /// assert_eq!(result, vec![6, 12]);
 /// ```
 pub fn chain<T>(data: &[T]) -> Chain<T>
@@ -124,7 +124,7 @@ where
     /// 
     /// let result = chain(&[1, 2, 3])
     ///     .map(|x| x * 2)
-    ///     .collect::<Vec<_>>();
+    ///     .collect();
     /// assert_eq!(result, vec![2, 4, 6]);
     /// ```
     pub fn map<F>(mut self, mapper: F) -> Self
@@ -144,7 +144,7 @@ where
     /// 
     /// let result = chain(&[1, 2, 3, 4, 5])
     ///     .filter(|x| x % 2 == 0)
-    ///     .collect::<Vec<_>>();
+    ///     .collect();
     /// assert_eq!(result, vec![2, 4]);
     /// ```
     pub fn filter<F>(mut self, predicate: F) -> Self
@@ -164,7 +164,7 @@ where
     /// 
     /// let result = chain(&[1, 2, 3, 4, 5])
     ///     .take(3)
-    ///     .collect::<Vec<_>>();
+    ///     .collect();
     /// assert_eq!(result, vec![1, 2, 3]);
     /// ```
     pub fn take(mut self, n: usize) -> Self {
@@ -181,7 +181,7 @@ where
     /// 
     /// let result = chain(&[1, 2, 3, 4, 5])
     ///     .skip(2)
-    ///     .collect::<Vec<_>>();
+    ///     .collect();
     /// assert_eq!(result, vec![3, 4, 5]);
     /// ```
     pub fn skip(mut self, n: usize) -> Self {
@@ -198,7 +198,7 @@ where
     /// 
     /// let result = chain(&[1, 2, 3])
     ///     .reverse()
-    ///     .collect::<Vec<_>>();
+    ///     .collect();
     /// assert_eq!(result, vec![3, 2, 1]);
     /// ```
     pub fn reverse(mut self) -> Self {
@@ -215,14 +215,11 @@ where
     /// 
     /// let result = chain(&[1, 2, 3])
     ///     .map(|x| x * 2)
-    ///     .collect::<Vec<_>>();
+    ///     .collect();
     /// assert_eq!(result, vec![2, 4, 6]);
     /// ```
-    pub fn collect<U>(self) -> Vec<U>
-    where
-        T: Into<U>,
-    {
-        self.value().into_iter().map(|x| x.into()).collect()
+    pub fn collect(self) -> Vec<T> {
+        self.value()
     }
 
     /// Get the final value after applying all operations.
@@ -426,7 +423,7 @@ mod tests {
     fn test_chain_map() {
         let result = chain(&[1, 2, 3])
             .map(|x| x * 2)
-            .collect::<Vec<_>>();
+            .collect();
         assert_eq!(result, vec![2, 4, 6]);
     }
 
@@ -434,7 +431,7 @@ mod tests {
     fn test_chain_filter() {
         let result = chain(&[1, 2, 3, 4, 5])
             .filter(|x| x % 2 == 0)
-            .collect::<Vec<_>>();
+            .collect();
         assert_eq!(result, vec![2, 4]);
     }
 
@@ -442,7 +439,7 @@ mod tests {
     fn test_chain_take() {
         let result = chain(&[1, 2, 3, 4, 5])
             .take(3)
-            .collect::<Vec<_>>();
+            .collect();
         assert_eq!(result, vec![1, 2, 3]);
     }
 
@@ -450,7 +447,7 @@ mod tests {
     fn test_chain_skip() {
         let result = chain(&[1, 2, 3, 4, 5])
             .skip(2)
-            .collect::<Vec<_>>();
+            .collect();
         assert_eq!(result, vec![3, 4, 5]);
     }
 
@@ -458,7 +455,7 @@ mod tests {
     fn test_chain_reverse() {
         let result = chain(&[1, 2, 3])
             .reverse()
-            .collect::<Vec<_>>();
+            .collect();
         assert_eq!(result, vec![3, 2, 1]);
     }
 
@@ -468,7 +465,7 @@ mod tests {
             .filter(|x| x % 2 == 0)
             .map(|x| x * 3)
             .take(3)
-            .collect::<Vec<_>>();
+            .collect();
         assert_eq!(result, vec![6, 12, 18]);
     }
 
@@ -493,7 +490,7 @@ mod tests {
         let empty: Vec<i32> = vec![];
         let result = chain(&empty)
             .map(|x| x * 2)
-            .collect::<Vec<_>>();
+            .collect();
         assert!(result.is_empty());
     }
 

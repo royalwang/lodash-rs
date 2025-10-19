@@ -1,0 +1,44 @@
+# Configuration for publishing to crates.io
+
+[package]
+# Ensure all required fields are present
+name = "lodash-rs"
+version = "0.1.0"
+edition = "2021"
+authors = ["royalwang <royalwang@example.com>"]
+description = "A high-performance, type-safe Rust implementation of Lodash collection methods with zero-cost abstractions"
+license = "MIT"
+repository = "https://github.com/royalwang/lodash-rs"
+homepage = "https://github.com/royalwang/lodash-rs"
+documentation = "https://docs.rs/lodash-rs"
+readme = "README.md"
+keywords = [
+    "lodash", 
+    "collections", 
+    "functional", 
+    "iterator", 
+    "utility", 
+    "array", 
+    "vector", 
+    "map", 
+    "filter", 
+    "reduce",
+    "async",
+    "parallel"
+]
+categories = [
+    "data-structures", 
+    "algorithms", 
+    "development-tools::testing",
+    "web-programming::http-client"
+]
+rust-version = "1.70"
+
+# Publishing checklist:
+# 1. Update version number
+# 2. Update CHANGELOG.md
+# 3. Run tests: cargo test
+# 4. Run clippy: cargo clippy
+# 5. Check documentation: cargo doc --open
+# 6. Dry run: cargo publish --dry-run
+# 7. Publish: cargo publish

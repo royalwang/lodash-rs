@@ -20,7 +20,7 @@ use std::collections::HashMap;
 /// use std::collections::HashMap;
 /// 
 /// let numbers = vec![6.1, 4.2, 6.3];
-/// let grouped = group_by(&numbers, |x| x.floor() as i32);
+/// let grouped = group_by(&numbers, |x| (*x as f64).floor() as i32);
 /// assert_eq!(grouped.get(&6), Some(&vec![6.1, 6.3]));
 /// assert_eq!(grouped.get(&4), Some(&vec![4.2]));
 /// ```
@@ -166,7 +166,7 @@ impl<T> Collection<T> {
     /// use std::collections::HashMap;
     /// 
     /// let collection = Collection::new(vec![6.1, 4.2, 6.3]);
-    /// let grouped = collection.group_by(|x| x.floor() as i32);
+    /// let grouped = collection.group_by(|x| (*x as f64).floor() as i32);
     /// assert_eq!(grouped.get(&6), Some(&vec![6.1, 6.3]));
     /// ```
     pub fn group_by<K, F>(&self, iteratee: F) -> HashMap<K, Vec<T>>
@@ -281,7 +281,7 @@ mod tests {
     #[test]
     fn test_group_by() {
         let numbers = vec![6.1, 4.2, 6.3];
-        let grouped = group_by(&numbers, |x| x.floor() as i32);
+        let grouped = group_by(&numbers, |x| (*x as f64).floor() as i32);
         assert_eq!(grouped.get(&6), Some(&vec![6.1, 6.3]));
         assert_eq!(grouped.get(&4), Some(&vec![4.2]));
     }
@@ -348,7 +348,7 @@ mod tests {
     #[test]
     fn test_collection_group_by() {
         let collection = Collection::new(vec![6.1, 4.2, 6.3]);
-        let grouped = collection.group_by(|x| x.floor() as i32);
+        let grouped = collection.group_by(|x| (*x as f64).floor() as i32);
         assert_eq!(grouped.get(&6), Some(&vec![6.1, 6.3]));
     }
 

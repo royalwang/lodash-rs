@@ -1,6 +1,9 @@
 //! Chain executor module for executing operation chains.
 
-use crate::chain::{Chain, AsyncChain, Operation, AsyncOperation};
+use crate::chain::{Chain, Operation};
+
+#[cfg(feature = "async")]
+use crate::chain::{AsyncChain, AsyncOperation};
 
 /// Executor for synchronous operation chains.
 pub struct ChainExecutor<T> {
@@ -42,10 +45,12 @@ impl<T> ChainExecutor<T> {
 }
 
 /// Executor for asynchronous operation chains.
+#[cfg(feature = "async")]
 pub struct AsyncChainExecutor<T> {
     chain: AsyncChain<T>,
 }
 
+#[cfg(feature = "async")]
 impl<T> AsyncChainExecutor<T> {
     /// Create a new async chain executor.
     pub fn new(chain: AsyncChain<T>) -> Self {

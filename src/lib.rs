@@ -27,12 +27,12 @@ assert_eq!(doubled, vec![2, 4, 6, 8]);
 let result = chain(&[1, 2, 3, 4, 5])
     .filter(|x| x % 2 == 0)
     .map(|x| x * 3)
-    .collect::<Vec<_>>();
+    .collect();
 assert_eq!(result, vec![6, 12]);
 
-// Async operations
-let async_result = map_async(&[1, 2, 3], |x| async move { x * 2 }).await;
-assert_eq!(async_result, vec![2, 4, 6]);
+// Async operations (requires async feature)
+// let async_result = map_async(&[1, 2, 3], |x| async move { x * 2 }).await;
+// assert_eq!(async_result, vec![2, 4, 6]);
 ```
 
 ## Architecture
@@ -100,7 +100,10 @@ pub mod prelude {
     };
 
     // Chain operations
-    pub use crate::chain::{chain, chain_async};
+    pub use crate::chain::chain;
+    
+    #[cfg(feature = "async")]
+    pub use crate::chain::chain_async;
 
     // Async versions
     #[cfg(feature = "async")]

@@ -57,7 +57,7 @@ where
 /// 
 /// let numbers = vec![1, 2, 3, 4, 5];
 /// let random = sample(&numbers);
-/// assert!(numbers.contains(random));
+/// assert!(numbers.contains(random.unwrap()));
 /// ```
 pub fn sample<T>(collection: &[T]) -> Option<&T> {
     if collection.is_empty() {
@@ -136,7 +136,7 @@ impl<T> Collection<T> {
     /// 
     /// let collection = Collection::new(vec![1, 2, 3, 4, 5]);
     /// let random = collection.sample();
-    /// assert!(collection.data().contains(random));
+    /// assert!(collection.data().contains(random.unwrap()));
     /// ```
     pub fn sample(&self) -> Option<&T> {
         sample(&self.data)

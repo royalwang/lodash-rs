@@ -1,6 +1,9 @@
 //! Chain builder module for constructing complex operation chains.
 
-use crate::chain::{Chain, AsyncChain, Operation, AsyncOperation};
+use crate::chain::{Chain, Operation};
+
+#[cfg(feature = "async")]
+use crate::chain::{AsyncChain, AsyncOperation};
 
 /// Builder for creating complex operation chains.
 pub struct ChainBuilder<T> {
@@ -45,11 +48,13 @@ impl<T> ChainBuilder<T> {
 }
 
 /// Builder for creating complex async operation chains.
+#[cfg(feature = "async")]
 pub struct AsyncChainBuilder<T> {
     data: Vec<T>,
     operations: Vec<AsyncOperation<T>>,
 }
 
+#[cfg(feature = "async")]
 impl<T> AsyncChainBuilder<T> {
     /// Create a new async chain builder.
     pub fn new(data: Vec<T>) -> Self {

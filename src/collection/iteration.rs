@@ -19,9 +19,9 @@ use crate::utils::{LodashError, Result, Predicate, Mapper, Reducer};
 /// each(&[1, 2, 3], |x| sum += x);
 /// assert_eq!(sum, 6);
 /// ```
-pub fn each<T, F>(collection: &[T], iteratee: F)
+pub fn each<T, F>(collection: &[T], mut iteratee: F)
 where
-    F: Fn(&T),
+    F: FnMut(&T),
 {
     for item in collection {
         iteratee(item);
@@ -41,7 +41,7 @@ where
 /// ```
 pub fn for_each<T, F>(collection: &[T], iteratee: F)
 where
-    F: Fn(&T),
+    F: FnMut(&T),
 {
     each(collection, iteratee);
 }
@@ -142,9 +142,9 @@ where
 /// for_each_right(&[1, 2, 3], |x| result.push(*x));
 /// assert_eq!(result, vec![3, 2, 1]);
 /// ```
-pub fn for_each_right<T, F>(collection: &[T], iteratee: F)
+pub fn for_each_right<T, F>(collection: &[T], mut iteratee: F)
 where
-    F: Fn(&T),
+    F: FnMut(&T),
 {
     for item in collection.iter().rev() {
         iteratee(item);
@@ -167,7 +167,7 @@ impl<T> Collection<T> {
     /// ```
     pub fn each<F>(&self, iteratee: F)
     where
-        F: Fn(&T),
+        F: FnMut(&T),
     {
         each(&self.data, iteratee);
     }
@@ -261,7 +261,7 @@ impl<T> Collection<T> {
     /// ```
     pub fn for_each_right<F>(&self, iteratee: F)
     where
-        F: Fn(&T),
+        F: FnMut(&T),
     {
         for_each_right(&self.data, iteratee);
     }

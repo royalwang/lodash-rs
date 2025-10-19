@@ -12,7 +12,7 @@ fn main() {
     println!("Doubled: {:?}", doubled);
     
     // Test filter operation
-    let evens: Vec<i32> = data.iter().filter(|x| *x % 2 == 0).collect();
+    let evens: Vec<i32> = data.iter().filter(|x| *x % 2 == 0).cloned().collect();
     println!("Even numbers: {:?}", evens);
     
     // Test reduce operation

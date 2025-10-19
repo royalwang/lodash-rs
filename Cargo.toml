@@ -2,45 +2,73 @@
 name = "lodash-rs"
 version = "0.1.0"
 edition = "2021"
-authors = ["Your Name <your.email@example.com>"]
-description = "A high-performance, type-safe Rust implementation of Lodash collection methods"
+authors = ["royalwang <royalwang@example.com>"]
+description = "A high-performance, type-safe Rust implementation of Lodash collection methods with zero-cost abstractions"
 license = "MIT"
-repository = "https://github.com/your-username/lodash-rs"
-keywords = ["lodash", "collections", "functional", "iterator", "utility"]
-categories = ["data-structures", "algorithms"]
+repository = "https://github.com/royalwang/lodash-rs"
+homepage = "https://github.com/royalwang/lodash-rs"
+documentation = "https://docs.rs/lodash-rs"
+readme = "README.md"
+keywords = [
+    "lodash", 
+    "collections", 
+    "functional", 
+    "iterator", 
+    "utility", 
+    "array", 
+    "vector", 
+    "map", 
+    "filter", 
+    "reduce",
+    "async",
+    "parallel"
+]
+categories = [
+    "data-structures", 
+    "algorithms", 
+    "development-tools::testing",
+    "web-programming::http-client"
+]
+rust-version = "1.70"
 
 [dependencies]
-# Async support
-futures = "0.3"
-tokio = { version = "1.0", features = ["full"], optional = true }
+# Core utilities
+rand = "0.8"
 
-# Parallel processing
+# Async support (optional)
+futures = { version = "0.3", optional = true }
+tokio = { version = "1.0", features = ["rt", "rt-multi-thread"], optional = true }
+
+# Parallel processing (optional)
 rayon = { version = "1.7", optional = true }
 
-# Serialization (for complex data types)
+# Serialization (optional)
 serde = { version = "1.0", features = ["derive"], optional = true }
 
-# WASM support
+# WASM support (optional)
 wasm-bindgen = { version = "0.2", optional = true }
 js-sys = { version = "0.3", optional = true }
 web-sys = { version = "0.3", optional = true }
 
-# Utilities
-rand = "0.8"
-
 [dev-dependencies]
+# Testing
 criterion = "0.5"
 proptest = "1.0"
 tokio-test = "0.4"
 
 [features]
-default = ["async"]
-async = ["tokio"]
+default = []
+async = ["futures", "tokio"]
 parallel = ["rayon"]
 serialize = ["serde"]
 wasm = ["wasm-bindgen", "js-sys", "web-sys"]
-no-std = []
 
+# Publishing configuration
+[package.metadata.docs.rs]
+features = []
+rustdoc-args = ["--cfg", "docsrs"]
+
+# Benchmark configuration
 # [[bench]]
 # name = "collection_benchmarks"
 # harness = false
@@ -48,3 +76,4 @@ no-std = []
 [lib]
 name = "lodash_rs"
 path = "src/lib.rs"
+doc = true

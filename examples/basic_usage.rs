@@ -43,7 +43,7 @@ fn basic_operations() {
     println!("  reduce([1,2,3,4,5], (acc, x) => acc + x, 0) = {}", sum);
     
     // ForEach operation
-    print!("  forEach([1,2,3,4,5], x => print!(\"{} \", x)) = ");
+    print!("  forEach([1,2,3,4,5], x => print!(\"{{}} \", x)) = ");
     for_each(&numbers, |x| print!("{} ", x));
     println!();
     
@@ -59,7 +59,7 @@ fn chain_operations() {
     let result = chain(&numbers)
         .filter(|x| x % 2 == 0)
         .map(|x| x * 3)
-        .collect::<Vec<_>>();
+        .collect();
     println!("  chain([1,2,3,4,5,6,7,8,9,10]).filter(x => x % 2 === 0).map(x => x * 3) = {:?}", result);
     
     // Complex chain
@@ -67,14 +67,14 @@ fn chain_operations() {
         .filter(|x| x % 2 == 0)
         .map(|x| x * 3)
         .take(3)
-        .collect::<Vec<_>>();
+        .collect();
     println!("  chain([1,2,3,4,5,6,7,8,9,10]).filter(x => x % 2 === 0).map(x => x * 3).take(3) = {:?}", result);
     
     // Chain with reverse
     let result = chain(&numbers)
         .take(5)
         .reverse()
-        .collect::<Vec<_>>();
+        .collect();
     println!("  chain([1,2,3,4,5,6,7,8,9,10]).take(5).reverse() = {:?}", result);
     
     println!();
