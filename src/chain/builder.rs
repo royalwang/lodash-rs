@@ -13,6 +13,7 @@ pub struct ChainBuilder<T> {
 
 impl<T> ChainBuilder<T> {
     /// Create a new chain builder.
+    #[must_use]
     pub fn new(data: Vec<T>) -> Self {
         Self {
             data,
@@ -21,6 +22,7 @@ impl<T> ChainBuilder<T> {
     }
 
     /// Add a map operation to the chain.
+    #[must_use]
     pub fn map<F>(mut self, mapper: F) -> Self
     where
         F: Fn(&T) -> T + Send + Sync + 'static,
@@ -30,6 +32,7 @@ impl<T> ChainBuilder<T> {
     }
 
     /// Add a filter operation to the chain.
+    #[must_use]
     pub fn filter<F>(mut self, predicate: F) -> Self
     where
         F: Fn(&T) -> bool + Send + Sync + 'static,
@@ -39,6 +42,7 @@ impl<T> ChainBuilder<T> {
     }
 
     /// Build the chain.
+    #[must_use]
     pub fn build(self) -> Chain<T> {
         Chain {
             data: self.data,

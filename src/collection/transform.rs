@@ -6,7 +6,8 @@ These methods are used to reorganize and transform collections.
 */
 
 use crate::collection::Collection;
-use crate::utils::{LodashError, Result, ToKey, ToComparable};
+// Note: These imports are kept for future use in error handling and type constraints
+// use crate::utils::{LodashError, Result, ToKey, ToComparable};
 use std::collections::HashMap;
 
 /// Create an object composed of keys generated from the results of running
@@ -276,12 +277,17 @@ impl<T> Collection<T> {
 #[cfg(test)]
 mod tests {
     use super::*;
-    use std::collections::HashMap;
+    // use std::collections::HashMap; // Already imported at module level
 
     #[test]
     fn test_group_by() {
         let numbers = vec![6.1, 4.2, 6.3];
-        let grouped = group_by(&numbers, |x| (*x as f64).floor() as i32);
+        let grouped = group_by(&numbers, |x| {
+            #[allow(clippy::cast_possible_truncation, clippy::unnecessary_cast)]
+            {
+                (*x as f64).floor() as i32
+            }
+        });
         assert_eq!(grouped.get(&6), Some(&vec![6.1, 6.3]));
         assert_eq!(grouped.get(&4), Some(&vec![4.2]));
     }
@@ -293,7 +299,7 @@ mod tests {
             ("jane", 25),
             ("bob", 35),
         ];
-        let keyed = key_by(&users, |(name, _)| name.to_string());
+        let keyed = key_by(&users, |(name, _)| (*name).to_string());
         assert_eq!(keyed.get("john"), Some(&("john", 30)));
         assert_eq!(keyed.get("jane"), Some(&("jane", 25)));
         assert_eq!(keyed.get("bob"), Some(&("bob", 35)));
@@ -348,7 +354,12 @@ mod tests {
     #[test]
     fn test_collection_group_by() {
         let collection = Collection::new(vec![6.1, 4.2, 6.3]);
-        let grouped = collection.group_by(|x| (*x as f64).floor() as i32);
+        let grouped = collection.group_by(|x| {
+            #[allow(clippy::cast_possible_truncation, clippy::unnecessary_cast)]
+            {
+                (*x as f64).floor() as i32
+            }
+        });
         assert_eq!(grouped.get(&6), Some(&vec![6.1, 6.3]));
     }
 
@@ -359,7 +370,7 @@ mod tests {
             ("jane", 25),
             ("bob", 35),
         ]);
-        let keyed = collection.key_by(|(name, _)| name.to_string());
+        let keyed = collection.key_by(|(name, _)| (*name).to_string());
         assert_eq!(keyed.get("john"), Some(&("john", 30)));
     }
 
@@ -398,7 +409,7 @@ mod tests {
         let grouped = group_by(&empty, |x| x % 2);
         assert!(grouped.is_empty());
 
-        let keyed = key_by(&empty, |x| x.to_string());
+        let keyed = key_by(&empty, std::string::ToString::to_string);
         assert!(keyed.is_empty());
 
         let invoked = invoke(&empty, |x| x * 2);

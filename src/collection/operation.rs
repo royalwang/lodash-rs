@@ -6,7 +6,8 @@ These methods are used to manipulate and analyze collections.
 */
 
 use crate::collection::Collection;
-use crate::utils::{LodashError, Result};
+// Note: These imports are kept for future use in error handling
+// use crate::utils::{LodashError, Result};
 use rand::seq::SliceRandom;
 use rand::thread_rng;
 
@@ -105,6 +106,7 @@ impl<T> Collection<T> {
     /// let collection = Collection::new(vec![1, 2, 3, 4, 5]);
     /// assert_eq!(collection.size(), 5);
     /// ```
+    #[must_use]
     pub fn size(&self) -> usize {
         size(&self.data)
     }
@@ -120,6 +122,7 @@ impl<T> Collection<T> {
     /// let shuffled = collection.shuffle();
     /// assert_eq!(shuffled.len(), 5);
     /// ```
+    #[must_use]
     pub fn shuffle(&self) -> Vec<T>
     where
         T: Clone,
@@ -138,6 +141,7 @@ impl<T> Collection<T> {
     /// let random = collection.sample();
     /// assert!(collection.data().contains(random.unwrap()));
     /// ```
+    #[must_use]
     pub fn sample(&self) -> Option<&T> {
         sample(&self.data)
     }
@@ -153,6 +157,7 @@ impl<T> Collection<T> {
     /// let samples = collection.sample_size(3);
     /// assert_eq!(samples.len(), 3);
     /// ```
+    #[must_use]
     pub fn sample_size(&self, n: usize) -> Vec<T>
     where
         T: Clone,

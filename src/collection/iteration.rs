@@ -6,7 +6,8 @@ These are the core methods for processing collections.
 */
 
 use crate::collection::Collection;
-use crate::utils::{LodashError, Result, Predicate, Mapper, Reducer};
+// Note: These imports are kept for future use in error handling and type constraints
+// use crate::utils::{LodashError, Result, Predicate, Mapper, Reducer};
 
 /// Iterate over elements of a collection, executing a function for each element.
 /// 
@@ -290,7 +291,7 @@ mod tests {
         let doubled = map(&[1, 2, 3], |x| x * 2);
         assert_eq!(doubled, vec![2, 4, 6]);
 
-        let strings = map(&[1, 2, 3], |x| x.to_string());
+        let strings = map(&[1, 2, 3], std::string::ToString::to_string);
         assert_eq!(strings, vec!["1", "2", "3"]);
     }
 
@@ -305,13 +306,13 @@ mod tests {
         let sum = reduce(&[1, 2, 3, 4], |acc, x| acc + x, 0);
         assert_eq!(sum, 10);
 
-        let result = reduce(&["a", "b", "c"], |acc, x| format!("{}{}", acc, x), String::new());
+        let result = reduce(&["a", "b", "c"], |acc, x| format!("{acc}{x}"), String::new());
         assert_eq!(result, "abc");
     }
 
     #[test]
     fn test_reduce_right() {
-        let result = reduce_right(&["a", "b", "c"], |acc, x| format!("{}{}", acc, x), String::new());
+        let result = reduce_right(&["a", "b", "c"], |acc, x| format!("{acc}{x}"), String::new());
         assert_eq!(result, "cba");
     }
 
@@ -354,7 +355,7 @@ mod tests {
     #[test]
     fn test_collection_reduce_right() {
         let collection = Collection::new(vec!["a", "b", "c"]);
-        let result = collection.reduce_right(|acc, x| format!("{}{}", acc, x), String::new());
+        let result = collection.reduce_right(|acc, x| format!("{acc}{x}"), String::new());
         assert_eq!(result, "cba");
     }
 

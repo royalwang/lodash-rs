@@ -21,49 +21,49 @@ impl ToKey for String {
 
 impl ToKey for &str {
     fn to_key(&self) -> String {
-        self.to_string()
+        (*self).to_string()
     }
 }
 
 impl ToKey for i32 {
     fn to_key(&self) -> String {
-        self.to_string()
+        (*self).to_string()
     }
 }
 
 impl ToKey for i64 {
     fn to_key(&self) -> String {
-        self.to_string()
+        (*self).to_string()
     }
 }
 
 impl ToKey for u32 {
     fn to_key(&self) -> String {
-        self.to_string()
+        (*self).to_string()
     }
 }
 
 impl ToKey for u64 {
     fn to_key(&self) -> String {
-        self.to_string()
+        (*self).to_string()
     }
 }
 
 impl ToKey for f32 {
     fn to_key(&self) -> String {
-        self.to_string()
+        (*self).to_string()
     }
 }
 
 impl ToKey for f64 {
     fn to_key(&self) -> String {
-        self.to_string()
+        (*self).to_string()
     }
 }
 
 impl ToKey for bool {
     fn to_key(&self) -> String {
-        self.to_string()
+        (*self).to_string()
     }
 }
 
@@ -181,13 +181,14 @@ impl ToComparable for &str {
     type Output = String;
     
     fn to_comparable(&self) -> Self::Output {
-        self.to_string()
+        (*self).to_string()
     }
 }
 
 /// Trait for types that can be safely cloned for collection operations.
 pub trait SafeClone {
     /// Safely clone the value.
+    #[must_use]
     fn safe_clone(&self) -> Self;
 }
 
@@ -205,19 +206,25 @@ pub trait ToHashKey {
 
 impl ToHashKey for i32 {
     fn to_hash_key(&self) -> u64 {
-        *self as u64
+        #[allow(clippy::cast_sign_loss)]
+        {
+            *self as u64
+        }
     }
 }
 
 impl ToHashKey for i64 {
     fn to_hash_key(&self) -> u64 {
-        *self as u64
+        #[allow(clippy::cast_sign_loss)]
+        {
+            *self as u64
+        }
     }
 }
 
 impl ToHashKey for u32 {
     fn to_hash_key(&self) -> u64 {
-        *self as u64
+        u64::from(*self)
     }
 }
 
@@ -250,6 +257,11 @@ impl ToHashKey for &str {
 }
 
 /// Utility function to safely convert between types.
+/// Safely convert a value from one type to another.
+/// 
+/// # Errors
+/// 
+/// Returns a `LodashError` if the conversion fails.
 pub fn safe_convert<T, U>(value: T) -> Result<U>
 where
     T: std::fmt::Display,

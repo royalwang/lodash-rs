@@ -6,7 +6,8 @@ These methods are used to search and test elements in collections.
 */
 
 use crate::collection::Collection;
-use crate::utils::{LodashError, Result, Predicate};
+// Note: These imports are kept for future use in error handling and type constraints
+// use crate::utils::{LodashError, Result, Predicate};
 
 /// Iterate over elements of collection, returning the first element
 /// the predicate returns truthy for.
@@ -304,7 +305,7 @@ impl<T> Collection<T> {
 #[cfg(test)]
 mod tests {
     use super::*;
-    use std::collections::HashMap;
+    // use std::collections::HashMap; // For future use in advanced query operations
 
     #[test]
     fn test_find() {
@@ -351,7 +352,12 @@ mod tests {
     #[test]
     fn test_count_by() {
         let numbers = vec![6.1, 4.2, 6.3];
-        let counts = count_by(&numbers, |x| (*x as f64).floor() as i32);
+        let counts = count_by(&numbers, |x| {
+            #[allow(clippy::cast_possible_truncation, clippy::unnecessary_cast)]
+            {
+                (*x as f64).floor() as i32
+            }
+        });
         assert_eq!(counts.get(&6), Some(&2));
         assert_eq!(counts.get(&4), Some(&1));
     }
@@ -403,7 +409,12 @@ mod tests {
     #[test]
     fn test_collection_count_by() {
         let collection = Collection::new(vec![6.1, 4.2, 6.3]);
-        let counts = collection.count_by(|x| (*x as f64).floor() as i32);
+        let counts = collection.count_by(|x| {
+            #[allow(clippy::cast_possible_truncation, clippy::unnecessary_cast)]
+            {
+                (*x as f64).floor() as i32
+            }
+        });
         assert_eq!(counts.get(&6), Some(&2));
     }
 

@@ -11,7 +11,8 @@ pub mod transform;
 pub mod operation;
 pub mod async_support;
 
-use crate::utils::{LodashError, Result};
+// Note: These imports are kept for future use in error handling
+// use crate::utils::{LodashError, Result};
 
 /// Core collection type that wraps a vector of items.
 /// 
@@ -50,6 +51,7 @@ impl<T> Collection<T> {
     /// let collection: Collection<i32> = Collection::empty();
     /// assert!(collection.is_empty());
     /// ```
+    #[must_use]
     pub fn empty() -> Self {
         Self { data: Vec::new() }
     }
@@ -64,6 +66,7 @@ impl<T> Collection<T> {
     /// let collection = Collection::new(vec![1, 2, 3]);
     /// assert_eq!(collection.len(), 3);
     /// ```
+    #[must_use]
     pub fn len(&self) -> usize {
         self.data.len()
     }
@@ -81,6 +84,7 @@ impl<T> Collection<T> {
     /// let collection = Collection::new(vec![1, 2, 3]);
     /// assert!(!collection.is_empty());
     /// ```
+    #[must_use]
     pub fn is_empty(&self) -> bool {
         self.data.is_empty()
     }
@@ -95,6 +99,7 @@ impl<T> Collection<T> {
     /// let collection = Collection::new(vec![1, 2, 3]);
     /// assert_eq!(collection.data(), &vec![1, 2, 3]);
     /// ```
+    #[must_use]
     pub fn data(&self) -> &Vec<T> {
         &self.data
     }
@@ -125,6 +130,7 @@ impl<T> Collection<T> {
     /// assert_eq!(collection.get(1), Some(&2));
     /// assert_eq!(collection.get(5), None);
     /// ```
+    #[must_use]
     pub fn get(&self, index: usize) -> Option<&T> {
         self.data.get(index)
     }
@@ -159,6 +165,7 @@ impl<T> Collection<T> {
     /// let empty: Collection<i32> = Collection::empty();
     /// assert_eq!(empty.first(), None);
     /// ```
+    #[must_use]
     pub fn first(&self) -> Option<&T> {
         self.data.first()
     }
@@ -176,6 +183,7 @@ impl<T> Collection<T> {
     /// let empty: Collection<i32> = Collection::empty();
     /// assert_eq!(empty.last(), None);
     /// ```
+    #[must_use]
     pub fn last(&self) -> Option<&T> {
         self.data.last()
     }
@@ -191,6 +199,7 @@ impl<T> Collection<T> {
     /// let vec = collection.into_vec();
     /// assert_eq!(vec, vec![1, 2, 3]);
     /// ```
+    #[must_use]
     pub fn into_vec(self) -> Vec<T> {
         self.data
     }
@@ -206,6 +215,8 @@ impl<T> Collection<T> {
     /// let sum: i32 = collection.into_iter().sum();
     /// assert_eq!(sum, 6);
     /// ```
+    #[must_use]
+    #[allow(clippy::should_implement_trait)]
     pub fn into_iter(self) -> std::vec::IntoIter<T> {
         self.data.into_iter()
     }
@@ -221,7 +232,7 @@ impl<T> Collection<T> {
     /// let sum: i32 = collection.iter().sum();
     /// assert_eq!(sum, 6);
     /// ```
-    pub fn iter(&self) -> std::slice::Iter<T> {
+    pub fn iter(&self) -> std::slice::Iter<'_, T> {
         self.data.iter()
     }
 
@@ -238,7 +249,7 @@ impl<T> Collection<T> {
     /// }
     /// assert_eq!(collection.data(), &vec![2, 4, 6]);
     /// ```
-    pub fn iter_mut(&mut self) -> std::slice::IterMut<T> {
+    pub fn iter_mut(&mut self) -> std::slice::IterMut<'_, T> {
         self.data.iter_mut()
     }
 }

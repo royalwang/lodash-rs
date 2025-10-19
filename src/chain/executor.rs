@@ -12,11 +12,13 @@ pub struct ChainExecutor<T> {
 
 impl<T> ChainExecutor<T> {
     /// Create a new chain executor.
+    #[must_use]
     pub fn new(chain: Chain<T>) -> Self {
         Self { chain }
     }
 
     /// Execute the chain and return the result.
+    #[must_use]
     pub fn execute(self) -> Vec<T> {
         let mut result = self.chain.data;
         
@@ -26,7 +28,7 @@ impl<T> ChainExecutor<T> {
                     result = result.into_iter().map(|x| mapper(&x)).collect();
                 }
                 Operation::Filter(predicate) => {
-                    result = result.into_iter().filter(|x| predicate(x)).collect();
+                    result.retain(|x| predicate(x));
                 }
                 Operation::Take(n) => {
                     result = result.into_iter().take(n).collect();

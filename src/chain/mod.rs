@@ -9,7 +9,8 @@ pub mod builder;
 pub mod executor;
 
 use crate::collection::Collection;
-use crate::utils::{LodashError, Result};
+// Note: These imports are kept for future use in error handling
+// use crate::utils::{LodashError, Result};
 
 /// Create a chain wrapper that enables method chaining.
 /// 
@@ -127,6 +128,7 @@ where
     ///     .collect();
     /// assert_eq!(result, vec![2, 4, 6]);
     /// ```
+    #[must_use]
     pub fn map<F>(mut self, mapper: F) -> Self
     where
         F: Fn(&T) -> T + Send + Sync + 'static,
@@ -147,6 +149,7 @@ where
     ///     .collect();
     /// assert_eq!(result, vec![2, 4]);
     /// ```
+    #[must_use]
     pub fn filter<F>(mut self, predicate: F) -> Self
     where
         F: Fn(&T) -> bool + Send + Sync + 'static,
@@ -167,6 +170,7 @@ where
     ///     .collect();
     /// assert_eq!(result, vec![1, 2, 3]);
     /// ```
+    #[must_use]
     pub fn take(mut self, n: usize) -> Self {
         self.operations.push(Operation::Take(n));
         self
@@ -184,6 +188,7 @@ where
     ///     .collect();
     /// assert_eq!(result, vec![3, 4, 5]);
     /// ```
+    #[must_use]
     pub fn skip(mut self, n: usize) -> Self {
         self.operations.push(Operation::Skip(n));
         self
@@ -201,6 +206,7 @@ where
     ///     .collect();
     /// assert_eq!(result, vec![3, 2, 1]);
     /// ```
+    #[must_use]
     pub fn reverse(mut self) -> Self {
         self.operations.push(Operation::Reverse);
         self
@@ -218,6 +224,7 @@ where
     ///     .collect();
     /// assert_eq!(result, vec![2, 4, 6]);
     /// ```
+    #[must_use]
     pub fn collect(self) -> Vec<T> {
         self.value()
     }
@@ -234,6 +241,7 @@ where
     ///     .value();
     /// assert_eq!(result, vec![2, 4, 6]);
     /// ```
+    #[must_use]
     pub fn value(self) -> Vec<T> {
         let mut result = self.data;
         
@@ -243,7 +251,7 @@ where
                     result = result.into_iter().map(|x| mapper(&x)).collect();
                 }
                 Operation::Filter(predicate) => {
-                    result = result.into_iter().filter(|x| predicate(x)).collect();
+                    result.retain(|x| predicate(x));
                 }
                 Operation::Take(n) => {
                     result = result.into_iter().take(n).collect();
@@ -272,6 +280,7 @@ where
     ///     .into_collection();
     /// assert_eq!(collection.data(), &vec![2, 4, 6]);
     /// ```
+    #[must_use]
     pub fn into_collection(self) -> Collection<T> {
         Collection::new(self.value())
     }

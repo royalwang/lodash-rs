@@ -122,6 +122,7 @@ pub mod prelude {
 }
 
 // Version information
+/// The version of the rust-lodash crate.
 pub const VERSION: &str = env!("CARGO_PKG_VERSION");
 
 // Feature detection
@@ -129,16 +130,19 @@ pub const VERSION: &str = env!("CARGO_PKG_VERSION");
 pub const HAS_ASYNC: bool = true;
 
 #[cfg(not(feature = "async"))]
+/// Whether async features are enabled.
 pub const HAS_ASYNC: bool = false;
 
 #[cfg(feature = "parallel")]
 pub const HAS_PARALLEL: bool = true;
 
 #[cfg(not(feature = "parallel"))]
+/// Whether parallel processing features are enabled.
 pub const HAS_PARALLEL: bool = false;
 
 #[cfg(feature = "wasm")]
 pub const HAS_WASM: bool = true;
 
 #[cfg(not(feature = "wasm"))]
+/// Whether WebAssembly features are enabled.
 pub const HAS_WASM: bool = false;

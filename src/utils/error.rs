@@ -9,19 +9,39 @@ in the Lodash-RS library.
 #[derive(Debug, Clone, PartialEq)]
 pub enum LodashError {
     /// Invalid input data
-    InvalidInput { message: String },
+    /// Invalid input provided to a function.
+    InvalidInput { 
+        /// The error message describing the invalid input.
+        message: String 
+    },
 
     /// Type conversion error
-    TypeConversion { from: String, to: String },
+    /// Type conversion error.
+    TypeConversion { 
+        /// The source type that failed to convert.
+        from: String, 
+        /// The target type that was attempted.
+        to: String 
+    },
 
     /// Index out of bounds
-    IndexOutOfBounds { index: usize, size: usize },
+    /// Index out of bounds error.
+    IndexOutOfBounds { 
+        /// The index that was out of bounds.
+        index: usize, 
+        /// The size of the collection.
+        size: usize 
+    },
 
     /// Empty collection operation
     EmptyCollection,
 
     /// Invalid predicate function
-    InvalidPredicate { message: String },
+    /// Invalid predicate function error.
+    InvalidPredicate { 
+        /// The error message describing the invalid predicate.
+        message: String 
+    },
 
     /// Async operation error
     #[cfg(feature = "async")]
@@ -36,26 +56,30 @@ pub enum LodashError {
     WasmError { message: String },
 
     /// Custom error from user-provided functions
-    Custom { message: String },
+    /// Custom error with a specific message.
+    Custom { 
+        /// The custom error message.
+        message: String 
+    },
 }
 
 impl std::fmt::Display for LodashError {
     fn fmt(&self, f: &mut std::fmt::Formatter<'_>) -> std::fmt::Result {
         match self {
             LodashError::InvalidInput { message } => {
-                write!(f, "Invalid input: {}", message)
+                write!(f, "Invalid input: {message}")
             }
             LodashError::TypeConversion { from, to } => {
-                write!(f, "Type conversion failed: {} -> {}", from, to)
+                write!(f, "Type conversion failed: {from} -> {to}")
             }
             LodashError::IndexOutOfBounds { index, size } => {
-                write!(f, "Index {} is out of bounds for collection of size {}", index, size)
+                write!(f, "Index {index} is out of bounds for collection of size {size}")
             }
             LodashError::EmptyCollection => {
                 write!(f, "Operation requires non-empty collection")
             }
             LodashError::InvalidPredicate { message } => {
-                write!(f, "Invalid predicate function: {}", message)
+                write!(f, "Invalid predicate function: {message}")
             }
             #[cfg(feature = "async")]
             LodashError::AsyncError { message } => {
@@ -70,7 +94,7 @@ impl std::fmt::Display for LodashError {
                 write!(f, "WASM operation failed: {}", message)
             }
             LodashError::Custom { message } => {
-                write!(f, "Custom error: {}", message)
+                write!(f, "Custom error: {message}")
             }
         }
     }
@@ -98,11 +122,13 @@ impl LodashError {
     }
 
     /// Create a new index out of bounds error.
+    #[must_use]
     pub fn index_out_of_bounds(index: usize, size: usize) -> Self {
         Self::IndexOutOfBounds { index, size }
     }
 
     /// Create a new empty collection error.
+    #[must_use]
     pub fn empty_collection() -> Self {
         Self::EmptyCollection
     }
@@ -146,9 +172,13 @@ impl LodashError {
     }
 }
 
-/// Extension trait for converting other error types to LodashError.
+/// Extension trait for converting other error types to `LodashError`.
 pub trait IntoLodashError<T> {
-    /// Convert the error to a LodashError.
+    /// Convert the error to a `LodashError`.
+    /// 
+    /// # Errors
+    /// 
+    /// Returns a `LodashError` if the conversion fails.
     fn into_lodash_error(self) -> Result<T>;
 }
 
